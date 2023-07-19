@@ -14,7 +14,10 @@ dotenv.config();
 
 app.use(
   cors({
-    origin: 'https://escapediary-fe-snowy.vercel.app',
+    origin: [
+      'https://escapediary-fe-snowy.vercel.app',
+      'https://escapediary-fe.vercel.app',
+    ],
     credentials: true,
   })
 );
