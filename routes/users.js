@@ -87,6 +87,7 @@ router.post("/login", async (req, res) => {
       secure: false,
       httpOnly:true ,
       sameSite: 'none',
+      setDomain : 'https://escapediary-fe-snowy.vercel.app'
       });
     return res.status(200).json({ message: "로그인에 성공했습니다." });
   } catch (error) {

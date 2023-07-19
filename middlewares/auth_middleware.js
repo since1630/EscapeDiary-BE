@@ -13,15 +13,20 @@ const verifyToken = async (req, res, next) => {
 
   const { Authorization } = req.cookies;
   console.log(Authorization);
-  const [authType, authToken] = (Authorization ?? "").split("%");
-  // console.log(authType)
-  // console.log(authToken)
+  const [authType, authToken] = (Authorization ?? "").split(" ");
+  console.log("authType",authType)
+  console.log(authToken)
   try {
-    if (!authToken || authType !== "Bearer") {
+    if (!authToken) {
       res.status(401).send({
-        errorMessage: "쿠키 보고싶다", //! 무조건 수정해야함
+        errorMessage: "토큰이 안맞음", //! 무조건 수정해야함
       });
       return;
+    } 
+    if (authType !== "Bearer"){
+      res.status(402).send({
+        errorMessage : "제대로 안쪼개진거임"
+      })
     }
 
     const { id } = jwt.verify(authToken, "my-secret-key");
