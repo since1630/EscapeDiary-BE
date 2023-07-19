@@ -14,10 +14,11 @@ dotenv.config();
 
 app.use(
   cors({
-    // origin : 'https://escapediary-fe-snowy.vercel.app',
-    // credentials : true
-    origin: '*',
+    origin: 'https://escapediary-fe-snowy.vercel.app',
     credentials: true,
+
+    // origin: '*',
+    // credentials: true,
   })
 );
 // 됨. 인증 써놓으니까 쿠키도 넘어감 보관도 되고
