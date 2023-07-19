@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 router.use(cors({
-    origin: 'https://escapediary-fe-delta.vercel.app',
+    origin: 'https://escapediary-fe-snowy.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
   }));
