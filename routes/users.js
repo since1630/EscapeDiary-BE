@@ -71,20 +71,15 @@ router.post("/login", async (req, res) => {
   const { id, password } = req.body;
 
   try {
+
+    const existUser = await Users.findOne({ where :{id} });
     // id 비밀번호 확인
-    if (!id || !password) {
+    if (!existUser || password !== existUser.password) {
       return res
         .status(400)
         .json({ message: " id와 비밀번호를 확인해주세요." });
     }
-
-    // id를 찾고
-    const existUser = await Users.findOne({ id, password });
-    if (!existUser) {
-      return res
-        .status(412)
-        .json({ message: "id 또는 비밀번호가 일치하지 않습니다." });
-    }
+    
 
     // 토큰 발급
     const token = jwt.sign({ id: existUser.id }, "my-secret-key");
