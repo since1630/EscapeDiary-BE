@@ -40,7 +40,7 @@ const verifyToken = async (req, res, next) => {
     next();
   } catch (err) {
     console.error(err);
-    res.status(401).send({
+    return res.status(401).send({
       errorMessage: '권한 인증에 실패하였습니다.',
     });
   }
