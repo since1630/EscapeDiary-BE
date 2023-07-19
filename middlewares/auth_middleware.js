@@ -12,7 +12,7 @@ const verifyToken = async (req, res, next) => {
   // console.log(authToken)
     if (!authToken || authType !== "Bearer") {
     res.status(401).send({
-      errorMessage: `${req.cookies}` ,//! 무조건 수정해야함
+      errorMessage: "쿠키 보고싶다" ,//! 무조건 수정해야함
     });
     return;
   } 
