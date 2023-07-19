@@ -96,22 +96,9 @@ router.post('/login', async (req, res) => {
 });
 
 // user 정보 받는 라우터 하나(verify 쓰고)
-<<<<<<< HEAD
-router.get('/user', verifyToken, async (req, res) => {
-  try {
-    // return res.status(200).json({message : `${req.cookies}`}) // ! 유저 조회 없이 일단 쿠키만 브라우저에서 보이게
-    const { id } = res.locals.user;
-    const idNickname = await Users.findOne({ where: { id } });
-    return res.status(200).json({ data: { id: idNickname } });
-=======
-router.get("/user", verifyToken, async (req, res) => {
   try {     
     return res.status(200).json({message : "하이영"})
-    // const user = res.locals.user;    
-    // const data = await Users.findOne({where:{id:user.id}})
-    // // console.log(data.id)
-    // return res.status(200).json({ data: {id : data.id} });
->>>>>>> 20fdf130d469336aa3f079617129e8bf5c753c96
+
   } catch (error) {
     console.log(error);
     return res
