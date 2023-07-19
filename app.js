@@ -13,7 +13,7 @@ dotenv.config();
 // 로그인 됬고 쿠키는 없고
 
 app.use(cors({
-  origin : 'https://escapediary-fe-snowy.vercel.app/',
+  origin : 'https://escapediary-fe-snowy.vercel.app',
   credentials : true
 }))
 
