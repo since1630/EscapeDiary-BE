@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
         // UserId: post.UserId,
         title: post.title,
         roomname: post.roomname,
-        id: post['User.nickname'],
+        id: post['User.id'],
         content: post.content,
         star: post.star,
         createdAt: post.createdAt,
@@ -91,7 +91,7 @@ router.get('/:postId', async (req, res) => {
     const post = await Posts.findOne({
       attributes: [
         'postId',
-        'UserId',
+        // 'UserId',
         'title',
         'roomname',
         'content',
@@ -114,7 +114,7 @@ router.get('/:postId', async (req, res) => {
       // UserId: post.UserId,
       title: post.title,
       roomname: post.roomname,
-      id: post['User.nickname'],
+      id: post['User.id'],
       content: post.content,
       star: post.star,
       createdAt: post.createdAt,
