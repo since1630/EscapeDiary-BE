@@ -83,6 +83,11 @@ router.post('/login', async (req, res) => {
 
     // cookie로 저장
     // res.cookie("Authorization", `Bearer ${token}`);
+
+    if (req.cookies) {
+      res.clearCookie('Authorization');
+    }
+
     res.cookie('Authorization', `Bearer_${token}`, {
       httpOnly: true,
       sameSite: 'none',

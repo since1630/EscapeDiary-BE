@@ -32,7 +32,6 @@ const verifyToken = async (req, res, next) => {
     const { id } = jwt.verify(authToken, 'my-secret-key');
     const user = await Users.findOne({ where: { id } });
     res.locals.user = user;
-
     next();
   } catch (err) {
     console.error(err);
