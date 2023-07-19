@@ -13,7 +13,7 @@ const verifyToken = async (req, res, next) => {
 
   const { Authorization } = req.cookies;
   // console.log(Authorization);
-  const [authType, authToken] = (Authorization ?? '').split('_');
+  const [authType, authToken] = (Authorization ?? '').split(' ');
   console.log('authType:', authType);
   console.log('authToken:', authToken);
   try {
@@ -29,7 +29,7 @@ const verifyToken = async (req, res, next) => {
       });
     }
 
-    const { id } = jwt.verify(authToken, 'escape'); // signature 토큰이 짤리는 바람에 수정 해야 했음.
+    const { id } = jwt.verify(authToken, 'escape'); // signature 토큰이 짤리는 바람에 수정 해야 했음. 이전 키는 my-secret-key
     console.log(id);
 
     const user = await Users.findOne({ where: { id } });
