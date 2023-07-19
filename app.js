@@ -14,7 +14,7 @@ app.use(cookieParser());
 app.use('/api', routes);
 app.use(
   cors({
-    origin: '*',
+    origin: ['https://escapediary-fe-delta.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
   })
