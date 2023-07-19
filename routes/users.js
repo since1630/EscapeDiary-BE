@@ -118,7 +118,8 @@ router.post('/logout', async (req, res) => {
 router.get('/user', verifyToken, (req, res) => {
   try {
     console.log('집에가자');
-    const userId = req.locals.user;
+    // const userId = req.locals.user;
+    const userId = res.locals.user;
     console.log('user_res.locals.user', userId);
     return res.status(200).json({ data: { id: userId } }); // 원래 여기가 user.id였음 근데 위의 값엔 user = 12345 임. 즉,12345.id 를 하니까 안된거임.
   } catch (error) {
