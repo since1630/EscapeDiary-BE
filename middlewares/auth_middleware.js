@@ -12,7 +12,7 @@ const verifyToken = async (req, res, next) => {
   console.log(authToken)
     if (!authToken || authType !== "Bearer") {
     res.status(401).send({
-      errorMessage: "11111",
+      errorMessage: `${req.cookies}` ,//! 무조건 수정해야함
     });
     return;
   } 
@@ -26,7 +26,7 @@ const verifyToken = async (req, res, next) => {
   } catch (err) {
     console.error(err);
     res.status(401).send({
-      errorMessage: "22222.",
+      errorMessage: "22222.", //! 무조건 수정해야함
     });
   }
 };
