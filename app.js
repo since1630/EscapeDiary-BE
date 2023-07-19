@@ -4,8 +4,6 @@ const app = express();
 const cookieParser = require('cookie-parser');
 
 const routes = require('./routes/index.js'); //! 여기 수정 해봄
-// const usersRouter = require("./routes/users")
-// const postsRouter = require("./routes/posts")
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -15,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: true,
+    origin: ['https://escapediary-fe-delta.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
   })
