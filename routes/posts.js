@@ -25,6 +25,7 @@ router.get('/', async (req, res) => {
         },
       ],
       order: [['createdAt', 'DESC']],
+      raw: true,
     });
     const formattedPosts = posts.map((post) => {
       return {
@@ -33,7 +34,7 @@ router.get('/', async (req, res) => {
         // UserId: post.UserId,
         title: post.title,
         roomname: post.roomname,
-        id: post['User.id.id'],
+        id: post['User.id'],
         content: post.content,
         star: post.star,
         createdAt: post.createdAt,
@@ -107,6 +108,7 @@ router.get('/:postId', async (req, res) => {
       ],
       where: { postId: postId },
       order: [['createdAt', 'DESC']],
+      raw: true,
     });
     const formattedPosts = {
       //* 포맷팅
