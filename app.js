@@ -3,7 +3,6 @@ const cors = require('cors');
 const app = express();
 const cookieParser = require('cookie-parser');
 
-
 const routes = require('./routes/index.js'); //! 여기 수정 해봄
 // const usersRouter = require("./routes/users")
 // const postsRouter = require("./routes/posts")
@@ -21,6 +20,7 @@ app.use(
     credentials: true,
   })
 );
+
 app.use('/api', routes);
 
 app.listen(process.env.PORT || 3000, (req, res) => {
