@@ -42,7 +42,6 @@ router.get('/', async (req, res) => {
     });
     console.log('posts:', formattedPosts);
     return res.status(200).json({ posts: formattedPosts });
-    // res.status(200).send('하이');
   } catch (error) {
     console.error(error);
     return res
@@ -75,7 +74,7 @@ router.post('/', verifyToken, async (req, res) => {
         .json({ errorMessage: '게시글 내용의 형식이 일치하지 않습니다.' });
     }
     await Posts.create({ UserId: userId, title, content, roomname, star });
-    // console.log(req.cookies);
+
     return res.status(201).json({ message: '게시글 작성에 성공하였습니다' });
   } catch (error) {
     console.log(error);
@@ -106,6 +105,7 @@ router.get('/:postId', async (req, res) => {
           attributes: ['id'],
         },
       ],
+      where: { postId },
       order: [['createdAt', 'DESC']],
     });
     const formattedPosts = {
