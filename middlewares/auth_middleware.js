@@ -6,7 +6,8 @@ const verifyToken = async (req, res, next) => {
   // console.log(req.cookies)
 
   try {
-    const { Authorization } = req.cookies;
+    // const { Authorization } = req.cookies;
+    const { Authorization } = req.headers;
     console.log(Authorization);
     const [authType, authToken] = (Authorization ?? '').split(' ');
     // console.log(authType)
