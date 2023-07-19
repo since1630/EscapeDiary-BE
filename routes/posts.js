@@ -91,7 +91,7 @@ router.get('/:postId', async (req, res) => {
     const post = await Posts.findOne({
       attributes: [
         'postId',
-        // 'UserId',
+        'UserId',
         'title',
         'roomname',
         'content',
