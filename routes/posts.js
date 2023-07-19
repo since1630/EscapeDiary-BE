@@ -4,7 +4,7 @@ const { Posts } = require('../models');
 const verifyToken = require('../middlewares/auth_middleware');
 
 // 게시글 전체 조회
-router.get('/', verifyToken, async (req, res) => {
+router.get('/', async (req, res) => {
   // 직전 /users 에서 유저의 토큰 정보를 갖고 와야하는데 미들웨어가 없었음.
   try {
     const posts = await Posts.findAll();
