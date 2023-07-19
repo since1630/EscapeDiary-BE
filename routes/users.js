@@ -104,8 +104,9 @@ router.post("/login", async (req, res) => {
 });
 
 // user 정보 받는 라우터 하나(verify 쓰고)
-router.get("/", verifyToken, (req, res) => {
+router.get("/user", verifyToken, (req, res) => {
   try {
+    return res.status(200).json({message : `${req.cookies}`}) // ! 유저 조회 없이 일단 쿠키만 브라우저에서 보이게
     const user = res.locals.user;
     return res.status(200).json({ data: {id : user.id} });
   } catch (error) {
