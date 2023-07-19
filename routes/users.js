@@ -70,7 +70,9 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { id, password } = req.body;
+    console.log('login_id:', id);
     const existUser = await Users.findOne({ where: { id } });
+    console.log('login_existUser:', existUser);
     // id 비밀번호 확인
     if (!existUser || password !== existUser.password) {
       return res
@@ -113,9 +115,10 @@ router.post('/logout', async (req, res) => {
 });
 
 // user 정보 받는 라우터 하나(verify 쓰고)
-router.get('/user', verifyToken, async (req, res) => {
+router.get('/user', verifyToken, (req, res) => {
   try {
     const user = req.locals.user;
+    console.log('user_res.locals.user', user);
     return res.status(200).json({ data: { id: user.id } });
   } catch (error) {
     console.log(error);
