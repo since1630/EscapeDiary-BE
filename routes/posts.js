@@ -8,8 +8,21 @@ router.get('/', verifyToken, async (req, res) => {
   // 직전 /users 에서 유저의 토큰 정보를 갖고 와야하는데 미들웨어가 없었음.
   try {
     const posts = await Posts.findAll();
-    console.log('posts:', posts);
-    return res.status(200).json({ posts });
+    const formattedPosts = posts.map((post) => {
+      return {
+        //* 포맷팅
+        postId: post.postId,
+        UserId: post.UserId,
+        title: post.title,
+        roomname: post.roomname,
+        content: post.content,
+        star: post.star,
+        createdAt: post.createdAt,
+        updatedAt: post.updatedAt,
+      };
+    });
+    console.log('posts:', formattedPosts);
+    return res.status(200).json({ posts: formattedPosts });
     // res.status(200).send('하이');
   } catch (error) {
     console.error(error);
