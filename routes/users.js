@@ -83,8 +83,8 @@ router.post("/login", async (req, res) => {
 
     // cookie로 저장
     // res.cookie("Authorization", `Bearer ${token}`);
-    res.cookie("Authorization", `Bearer ${token}`, {
-      secure: false,
+    res.cookie("Authorization", `Bearer_${token}`, {
+      secure: true,
       httpOnly:true ,
       sameSite: 'none',
       setDomain : 'https://escapediary-fe-snowy.vercel.app'
