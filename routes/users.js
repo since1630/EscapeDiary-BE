@@ -84,9 +84,9 @@ router.post('/login', async (req, res) => {
     // cookie로 저장
     // res.cookie("Authorization", `Bearer ${token}`);
 
-    if (req.cookies) {
-      res.clearCookie('Authorization');
-    }
+    // if (req.cookies) {
+    //   res.clearCookie('Authorization',);
+    // }
 
     res.cookie('Authorization', `Bearer_${token}`, {
       httpOnly: true,
@@ -94,7 +94,7 @@ router.post('/login', async (req, res) => {
       secure: true,
       path: '/',
     });
-    return res.status(200).json({ message: '로그인에 성공했습니다.' });
+    return res.status(200).json({ message: token });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ message: '로그인에 실패하였습니다.' });
