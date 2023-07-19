@@ -1,13 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const { Posts } = require('../models');
+const { Users, Posts } = require('../models');
 const verifyToken = require('../middlewares/auth_middleware');
 
 // 게시글 전체 조회
 router.get('/', async (req, res) => {
   // 직전 /users 에서 유저의 토큰 정보를 갖고 와야하는데 미들웨어가 없었음.
   try {
-    const posts = await Posts.findAll();
+    const posts = await Posts.findAll({
+      attributes: [
+        'postId',
+        'UserId',
+        'title',
+        'roomname',
+        'content',
+        'star',
+        'createdAt',
+        'updatedAt',
+      ],
+      include: [
+        {
+          model: Users,
+          attributes: ['id'],
+        },
+      ],
+      order: [['createdAt', 'DESC']],
+    });
     const formattedPosts = posts.map((post) => {
       return {
         //* 포맷팅
@@ -15,6 +33,7 @@ router.get('/', async (req, res) => {
         UserId: post.UserId,
         title: post.title,
         roomname: post.roomname,
+        id: post['User.nickname'],
         content: post.content,
         star: post.star,
         createdAt: post.createdAt,
@@ -73,17 +92,36 @@ router.get('/:postId', async (req, res) => {
     const post = await Posts.findOne({
       attributes: [
         'postId',
+        'UserId',
         'title',
-        'content',
         'roomname',
+        'content',
         'star',
         'createdAt',
         'updatedAt',
       ],
-      where: { postId },
+      include: [
+        {
+          model: Users,
+          attributes: ['id'],
+        },
+      ],
+      order: [['createdAt', 'DESC']],
     });
+    const formattedPosts = {
+      //* 포맷팅
+      postId: post.postId,
+      UserId: post.UserId,
+      title: post.title,
+      roomname: post.roomname,
+      id: post['User.nickname'],
+      content: post.content,
+      star: post.star,
+      createdAt: post.createdAt,
+      updatedAt: post.updatedAt,
+    };
 
-    return res.status(200).json({ data: post });
+    return res.status(200).json({ post: formattedPosts });
   } catch (error) {
     console.log(error);
     return res
