@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
         // UserId: post.UserId,
         title: post.title,
         roomname: post.roomname,
-        id: post['User.id'],
+        id: post['User.id.id'],
         content: post.content,
         star: post.star,
         createdAt: post.createdAt,
@@ -105,7 +105,7 @@ router.get('/:postId', async (req, res) => {
           attributes: ['id'],
         },
       ],
-      where: { postId },
+      where: { postId: postId },
       order: [['createdAt', 'DESC']],
     });
     const formattedPosts = {
