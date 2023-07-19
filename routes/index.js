@@ -1,9 +1,8 @@
 const express = require('express');
-const posts = require('./posts');
-const users = require('./users')
-// const cors = require('cors')
 const router = express.Router();
-
+const posts = require('./posts');
+const users = require('./users');
+// const cors = require('cors')
 
 // router.use(cors({
 //     origin: '*'
@@ -11,6 +10,5 @@ const router = express.Router();
 
 router.use('/', users);
 router.use('/posts', posts);
-
 
 module.exports = router;
