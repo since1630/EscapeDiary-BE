@@ -99,7 +99,7 @@ router.post("/login", async (req, res) => {
 // user 정보 받는 라우터 하나(verify 쓰고)
 router.get("/user", verifyToken, async (req, res) => {
   try {     
-    return res.stats(200).json({message : "하이영"})
+    return res.status(200).json({message : "하이영"})
     // const user = res.locals.user;    
     // const data = await Users.findOne({where:{id:user.id}})
     // // console.log(data.id)
