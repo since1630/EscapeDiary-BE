@@ -29,7 +29,7 @@ const verifyToken = async (req, res, next) => {
       });
     }
 
-    const { id } = jwt.verify(authToken, 'my-secret-key');
+    const { id } = jwt.verify(authToken, 'escape'); // signature 토큰이 짤리는 바람에 수정 해야 했음.
     console.log(id);
 
     const user = await Users.findOne({ where: { id } });

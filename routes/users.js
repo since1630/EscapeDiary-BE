@@ -81,7 +81,7 @@ router.post('/login', async (req, res) => {
     }
 
     // 토큰 발급
-    const token = jwt.sign({ id: existUser.id }, 'my-secret-key');
+    const token = jwt.sign({ id: existUser.id }, 'escape');
 
     // cookie로 저장
     // res.cookie("Authorization", `Bearer ${token}`);
