@@ -83,11 +83,7 @@ router.post("/login", async (req, res) => {
 
     // cookie로 저장
     // res.cookie("Authorization", `Bearer ${token}`);
-    res.cookie("Authorization", `Bearer_${token}`, {
-      secure: true,
-      httpOnly:true ,
-      sameSite: 'none'      
-      });
+    res.cookie("Authorization", `Bearer_${token}`);
     return res.status(200).json({ message: "로그인에 성공했습니다." });
   } catch (error) {
     console.log(error);
