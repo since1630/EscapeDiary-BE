@@ -32,7 +32,9 @@ const verifyToken = async (req, res, next) => {
     const { id } = jwt.verify(authToken, 'escape'); // signature 토큰이 짤리는 바람에 수정 해야 했음. 이전 키는 my-secret-key
 
     console.log('/user_id:', id);
-    const user = await Users.findOne({ where: { id } });
+
+    const user = await Users.findOne({ where: { id: id } });
+
     console.log('user:', user);
     res.locals.user = user;
     next();
