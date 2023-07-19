@@ -33,7 +33,7 @@ const verifyToken = async (req, res, next) => {
 
     console.log('/user_id:', id);
 
-    const user = await Users.findOne({ where: { id: id } });
+    const user = await Users.findOne({ where: { id } });
 
     console.log('user:', user);
     res.locals.user = user;
