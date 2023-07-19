@@ -8,9 +8,6 @@ const routes = require('./routes/index.js'); //! 여기 수정 해봄
 const dotenv = require('dotenv');
 dotenv.config();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(
   cors({
     origin: ['https://escapediary-fe-snowy.vercel.app'],
@@ -18,6 +15,9 @@ app.use(
     credentials: true,
   })
 );
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use('/api', routes);
 
 app.listen(process.env.PORT || 3000, (req, res) => {
