@@ -68,10 +68,8 @@ router.post("/signup", async (req, res) => {
 
 // 로그인
 router.post("/login", async (req, res) => {
-  const { id, password } = req.body;
-
-  try {
-
+    try {
+    const { id, password } = req.body;
     const existUser = await Users.findOne({ where :{id} });
     // id 비밀번호 확인
     if (!existUser || password !== existUser.password) {
