@@ -12,12 +12,12 @@ const verifyToken = async (req, res, next) => {
   }
 
   const { Authorization } = req.cookies;
-  console.log(Authorization);
+  // console.log(Authorization);
   const [authType, authToken] = (Authorization ?? "").split("_");
-  console.log("authType",authType)
-  console.log(authToken)
+  // console.log("authType",authType)
+  // console.log(authToken)
   try {
-    if (!authToken) {
+    if (!authToken) {      
       res.status(401).send({
         errorMessage: "토큰이 안맞음", //! 무조건 수정해야함
       });
