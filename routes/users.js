@@ -8,7 +8,7 @@ const verifyToken = require("../middlewares/auth_middleware");
 router.post("/signup", async (req, res) => {
   const { id, password, confirm } = req.body;
   try {
-    // 값이 다 있는지 확인부터
+    // 값이 다 있는지 확인부터    
     if (!id || !password || !confirm) {
       return res
         .status(412)
@@ -96,10 +96,22 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// 로그아웃 하나 구현
+router.post("/logout", async (req,res)=>{
+  try {
+    res.clearCookie("Authorization")
+    return res.status(200).json({ message : "로그아웃 되었습니다."})
+  } catch(error){
+    console.log(error)
+    return res.status(400).json({ message : "로그아웃에 실패하였습니다."})
+  }
+})
+
 // user 정보 받는 라우터 하나(verify 쓰고)
 router.get("/user", verifyToken, async (req, res) => {
   try {
-    return res.status(200).json({ message: "하이영" });
+    const user = req.locals.user    
+    return res.status(200).json({ data : {id : user.id} });
   } catch (error) {
     console.log(error);
     return res

@@ -19,13 +19,13 @@ const verifyToken = async (req, res, next) => {
   try {
     if (!authToken) {      
       res.status(401).send({
-        errorMessage: "토큰이 안맞음", //! 무조건 수정해야함
+        errorMessage: "옳바르지 않은 토큰입니다."
       });
       return;
     } 
     if (authType !== "Bearer"){
       res.status(402).send({
-        errorMessage : "제대로 안쪼개진거임"
+        errorMessage : "쿠키를 불러오는데 실패하였습니다."
       })
     }
 
@@ -37,7 +37,7 @@ const verifyToken = async (req, res, next) => {
   } catch (err) {
     console.error(err);
     res.status(401).send({
-      errorMessage: "22222.", //! 무조건 수정해야함
+      errorMessage: "권한 인증에 실패하였습니다."
     });
   }
 };
