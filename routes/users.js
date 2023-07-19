@@ -49,8 +49,8 @@ router.post("/signup", async (req, res) => {
     }
 
     // id 유니크
-    const existUser = await Users.findOne({where:{ id }});
-    console.log(existUser)
+    const existUser = await Users.findOne({ where: { id } });
+    console.log(existUser);
     if (existUser) {
       return res.status(412).json({ message: "중복된 id 입니다." });
     }
@@ -68,22 +68,21 @@ router.post("/signup", async (req, res) => {
 
 // 로그인
 router.post("/login", async (req, res) => {
-    try {
+  try {
     const { id, password } = req.body;
-    const existUser = await Users.findOne({ where :{id} });
+    const existUser = await Users.findOne({ where: { id } });
     // id 비밀번호 확인
     if (!existUser || password !== existUser.password) {
       return res
         .status(400)
         .json({ message: " id와 비밀번호를 확인해주세요." });
     }
-    
 
     // 토큰 발급
     const token = jwt.sign({ id: existUser.id }, "my-secret-key");
 
     // cookie로 저장
-    res.cookie("Authorization", `Bearer ${token}`)
+    res.cookie("Authorization", `Bearer ${token}`);
     // res.cookie("Authorization", `Bearer ${token}`, {
     //   secure: false,
     //   httpOnly: ,
@@ -98,12 +97,8 @@ router.post("/login", async (req, res) => {
 
 // user 정보 받는 라우터 하나(verify 쓰고)
 router.get("/user", verifyToken, async (req, res) => {
-  try {     
-    return res.status(200).json({message : "하이영"})
-    // const user = res.locals.user;    
-    // const data = await Users.findOne({where:{id:user.id}})
-    // // console.log(data.id)
-    // return res.status(200).json({ data: {id : data.id} });
+  try {
+    return res.status(200).json({ message: "하이영" });
   } catch (error) {
     console.log(error);
     return res
@@ -111,6 +106,5 @@ router.get("/user", verifyToken, async (req, res) => {
       .json({ message: "유저 정보를 불러오지 못했습니다." });
   }
 });
- 
 
 module.exports = router;
