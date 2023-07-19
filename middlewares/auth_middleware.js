@@ -14,8 +14,8 @@ const verifyToken = async (req, res, next) => {
   const { Authorization } = req.cookies;
   // console.log(Authorization);
   const [authType, authToken] = (Authorization ?? '').split('_');
-  // console.log("authType",authType)
-  // console.log(authToken)
+  console.log('authType:', authType);
+  console.log('authToken:', authToken);
   try {
     if (!authToken) {
       res.status(401).send({
