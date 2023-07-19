@@ -115,7 +115,7 @@ router.post('/logout', async (req, res) => {
 });
 
 // user 정보 받는 라우터 하나(verify 쓰고)
-router.get('/user', verifyToken(), (req, res) => {
+router.get('/user', verifyToken, (req, res) => {
   try {
     const userId = req.locals.user;
     console.log('user_res.locals.user', userId);
