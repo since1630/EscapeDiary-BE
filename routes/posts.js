@@ -29,8 +29,8 @@ router.get('/', async (req, res) => {
     const formattedPosts = posts.map((post) => {
       return {
         //* 포맷팅
-        postId: post.postId,
-        UserId: post.UserId,
+        // postId: post.postId,
+        // UserId: post.UserId,
         title: post.title,
         roomname: post.roomname,
         id: post['User.nickname'],
@@ -110,8 +110,8 @@ router.get('/:postId', async (req, res) => {
     });
     const formattedPosts = {
       //* 포맷팅
-      postId: post.postId,
-      UserId: post.UserId,
+      // postId: post.postId,
+      // UserId: post.UserId,
       title: post.title,
       roomname: post.roomname,
       id: post['User.nickname'],
