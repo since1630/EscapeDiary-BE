@@ -90,7 +90,7 @@ router.post('/login', async (req, res) => {
     //   res.clearCookie('Authorization',);
     // }
 
-    res.cookie('Authorization', `Bearer_${token}`, {
+    res.cookie('Authorization', `Bearer ${token}`, {
       httpOnly: true,
       sameSite: 'none',
       secure: true,
