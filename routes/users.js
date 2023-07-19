@@ -117,9 +117,9 @@ router.post('/logout', async (req, res) => {
 // user 정보 받는 라우터 하나(verify 쓰고)
 router.get('/user', verifyToken, (req, res) => {
   try {
-    const user = req.locals.user;
-    console.log('user_res.locals.user', user);
-    return res.status(200).json({ data: { id: user.id } });
+    const userId = req.locals.user;
+    console.log('user_res.locals.user', userId);
+    return res.status(200).json({ data: { id: userId } }); // 원래 여기가 user.id였음 근데 위의 값엔 user = 12345 임. 즉,12345.id 를 하니까 안된거임.
   } catch (error) {
     console.log(error);
     return res
