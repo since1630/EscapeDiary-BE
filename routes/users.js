@@ -100,6 +100,8 @@ router.post("/login", async (req, res) => {
 router.get("/user", verifyToken, async (req, res) => {
   try {     
     const user = res.locals.user;
+    // console.log(user)
+    await Users.findOne({where:{id:user.id}})
     return res.status(200).json({ data: {id : user.id} });
   } catch (error) {
     console.log(error);

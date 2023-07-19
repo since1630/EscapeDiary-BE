@@ -6,10 +6,10 @@ const {Users} = require("../models");
 const verifyToken = async (req, res, next) => {
   // console.log(req.cookies)
   const { Authorization } = req.cookies;
-  console.log(Authorization)
+  // console.log(Authorization)
   const [authType, authToken] = (Authorization ?? "").split(" ");
   // console.log(authType)
-  console.log(authToken)
+  // console.log(authToken)
     if (!authToken || authType !== "Bearer") {
     res.status(401).send({
       errorMessage: `${req.cookies}` ,//! 무조건 수정해야함
