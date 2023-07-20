@@ -41,8 +41,7 @@ router.get('/', async (req, res) => {
         createdAt: post.createdAt,
         updatedAt: post.updatedAt,
       };
-    });
-    console.log('posts:', formattedPosts);
+    });    
     return res.status(200).json({ posts: formattedPosts });
   } catch (error) {
     console.error(error);
