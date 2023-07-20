@@ -38,7 +38,7 @@
   
   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
   <img src="https://img.shields.io/badge/amazon s3-569A31?style=for-the-badge&logo=amazon s3&logoColor=white">
-  [![Amazon CodeDeploy](https://img.shields.io/badge/amazon%20codedeploy-569A31?style=for-the-badge&logo=amazoncodedeploy&logoColor=white)](https://aws.amazon.com/codedeploy/)
+  <img src="https://img.shields.io/badge/amazon%20codedeploy-569A31?style=for-the-badge&logo=amazoncodedeploy&logoColor=white" alt="Amazon CodeDeploy">
 
 </div>
 
