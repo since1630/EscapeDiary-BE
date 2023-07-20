@@ -38,7 +38,8 @@
   
   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
   <img src="https://img.shields.io/badge/amazon s3-569A31?style=for-the-badge&logo=amazon s3&logoColor=white">
-  <img src="https://img.shields.io/badge/amazon codedeploy-569A31?style=for-the-badge&logo=amazon codedeploy&logoColor=white">
+  [![Amazon CodeDeploy](https://img.shields.io/badge/amazon%20codedeploy-569A31?style=for-the-badge&logo=amazoncodedeploy&logoColor=white)](https://aws.amazon.com/codedeploy/)
+
 </div>
 
 ### 3. 팀 레퍼런스 주소
