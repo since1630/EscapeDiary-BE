@@ -57,7 +57,7 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign({ id: existUser.id }, "escape");    
     
     res.cookie("Authorization", `Bearer ${token}`, {
-      // httpOnly: true,
+      httpOnly: true,
       sameSite: "none",
       secure: true,
       path: "/",
