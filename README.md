@@ -20,7 +20,7 @@
 <br />
 
 ### 2. 개발 환경
-
+<div align=left> 
   <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
   <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=node.js&logoColor=white">
   <img src="https://img.shields.io/badge/amazon ec2-FF9900?style=for-the-badge&logo=amazon ec2&logoColor=white">
@@ -39,9 +39,9 @@
   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
   <img src="https://img.shields.io/badge/amazon s3-569A31?style=for-the-badge&logo=amazon s3&logoColor=white">
   <img src="https://img.shields.io/badge/amazon s3-569A31?style=for-the-badge&logo=amazon codedeploy&logoColor=white">
+</div>
 
 ### 3. 팀 레퍼런스 주소
-
 [Notion](https://www.notion.so/5-EscapeDiary-9637b15e1d27465ab820e2127e152b45)
 
 [FrontEnd GitHub](https://github.com/hyeon12/escapediary-FE/tree/main)
