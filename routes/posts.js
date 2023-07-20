@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Users, Posts } = require('../models');
 const verifyToken = require('../middlewares/auth_middleware');
+const postsSchema = require('../schemas/posts')
 
 // 게시글 전체 조회
 router.get('/', async (req, res) => {
@@ -55,25 +56,13 @@ router.get('/', async (req, res) => {
 router.post('/', verifyToken, async (req, res) => {
   const { title, content, roomname, star } = req.body;
   const { userId } = res.locals.user;
-  try {
-    //! FE 내용중 하나라도 빠져있으면 에러 메시지 반환
-    if (!star) {
-      return res
-        .status(400)
-        .json({ errorMessage: '게시글 작성에 실패하였습니다.' });
+  try {    
+    const postsData = {title,content,roomname,star}
+    const {error} = postsSchema.validate(postsData)
+    if(error){
+      return res.status(412).json({message : error.details[0].message})
     }
-    // 타이틀 검증(형식)
-    if (!title || title.length > 25) {
-      return res
-        .status(412)
-        .json({ errorMessage: '게시글 제목의 형식이 일치하지 않습니다.' });
-    }
-    //! content의 형식이 비정상적인 경우
-    if (!content || content.length > 1000) {
-      return res
-        .status(412)
-        .json({ errorMessage: '게시글 내용의 형식이 일치하지 않습니다.' });
-    }
+  
     await Posts.create({ UserId: userId, title, content, roomname, star });
 
     return res.status(201).json({ message: '게시글 작성에 성공하였습니다' });
@@ -139,6 +128,12 @@ router.put('/:postId', verifyToken, async (req, res) => {
     const { title, content, roomname, star } = req.body;
     const { userId } = res.locals.user;
 
+    const postsData = {title,content,roomname,star}
+    const {error} = postsSchema.validate(postsData)
+    if(error){
+      return res.status(412).json({message : error.details[0].message})
+    }
+    
     const post = await Posts.findOne({ where: { postId } });
 
     if (!post) {

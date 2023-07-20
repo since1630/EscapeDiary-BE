@@ -3,7 +3,7 @@ const { Users } = require('../models');
 
 // 사용자 인증 미들웨어
 const verifyToken = async (req, res, next) => {
-  console.log(req.cookies);
+  // console.log(req.cookies);
 
   if (!req.cookies || typeof req.cookies !== 'object') {
     console.error('No cookies found.');
@@ -12,7 +12,7 @@ const verifyToken = async (req, res, next) => {
   }
 
   const { Authorization } = req.cookies;
-  // console.log(Authorization);
+  console.log(Authorization);
   const [authType, authToken] = (Authorization ?? '').split(' ');
   console.log('authType:', authType);
   console.log('authToken:', authToken);
