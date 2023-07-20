@@ -28,16 +28,18 @@ jobs:
       #     - run: npm run build --if-present
       #     - run: npm test
 
-      # - name: create env file
-      #   working-directory: ./
-      #   run: |
-      #     pwd
-      #     touch .env
-      #     echo PORT=${{ secrets.PORT }} >> .env
-      #     echo MONGODB_URI=${{ secrets.MONGODB_URI }} >> .env
-      #     echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
-      #     echo JWT_ALGO=${{ secrets.JWT_ALGO }} >> .env
-      #     cat .env
+      - name: create env file
+        working-directory: ./
+        run: |
+          pwd
+          touch .env
+          echo PORT=${{ secrets.PORT }} >> .env
+          echo MYSQL_USERNAME=${{ secrets.MYSQL_USERNAME }} >> .env
+          echo MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }} >> .env
+          echo MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }} >> .env
+          echo MYSQL_HOST=${{ secrets.MYSQL_HOST }} >> .env
+          echo JWT_SECRET=${{ secrets.JWT_SECRET_SECRET_KEY }} >> .env
+          cat .env
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1

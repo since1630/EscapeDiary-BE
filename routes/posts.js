@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Users, Posts } = require('../models');
 const verifyToken = require('../middlewares/auth_middleware');
-const postsSchema = require('../schemas/posts')
+const postsSchema = require('../schemas/posts.schema.js');
 
 // 게시글 전체 조회
 router.get('/', async (req, res) => {
@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
         createdAt: post.createdAt,
         updatedAt: post.updatedAt,
       };
-    });    
+    });
     return res.status(200).json({ posts: formattedPosts });
   } catch (error) {
     console.error(error);
@@ -55,13 +55,13 @@ router.get('/', async (req, res) => {
 router.post('/', verifyToken, async (req, res) => {
   const { title, content, roomname, star } = req.body;
   const { userId } = res.locals.user;
-  try {    
-    const postsData = {title,content,roomname,star}
-    const {error} = postsSchema.validate(postsData)
-    if(error){
-      return res.status(412).json({message : error.details[0].message})
+  try {
+    const postsData = { title, content, roomname, star };
+    const { error } = postsSchema.validate(postsData);
+    if (error) {
+      return res.status(412).json({ message: error.details[0].message });
     }
-  
+
     await Posts.create({ UserId: userId, title, content, roomname, star });
 
     return res.status(201).json({ message: '게시글 작성에 성공하였습니다' });
@@ -127,12 +127,12 @@ router.put('/:postId', verifyToken, async (req, res) => {
     const { title, content, roomname, star } = req.body;
     const { userId } = res.locals.user;
 
-    const postsData = {title,content,roomname,star}
-    const {error} = postsSchema.validate(postsData)
-    if(error){
-      return res.status(412).json({message : error.details[0].message})
+    const postsData = { title, content, roomname, star };
+    const { error } = postsSchema.validate(postsData);
+    if (error) {
+      return res.status(412).json({ message: error.details[0].message });
     }
-    
+
     const post = await Posts.findOne({ where: { postId } });
 
     if (!post) {
