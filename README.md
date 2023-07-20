@@ -184,7 +184,7 @@
     credentials: true,
   })
   );
-  // 됨. 인증 써놓으니까 쿠키도 넘어감 보관도 되고
+
   
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
